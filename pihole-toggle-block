@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Get 'Block' group's new value
+block_status="$(docker exec ad0 sqlite3 /etc/pihole/gravity.db "select enabled from 'group' where name = 'Block';")"
+((block_status ^= 1))
+
+# Update database
+docker exec ad0 sqlite3 /etc/pihole/gravity.db \
+  "update 'group' set enabled="$block_status" where name='Block'" >> /tmp/pihole_group.log 2>&1
