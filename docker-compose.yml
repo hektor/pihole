@@ -6,7 +6,6 @@ services:
     network_mode: 'host'
     environment:
       TZ: 'Europe/Brussels'
-      WEBPASSWORD: '4H0L31NMYP1'
     volumes:
       - './etc-pihole:/etc/pihole'
       - './etc-dnsmasq.d:/etc/dnsmasq.d'
